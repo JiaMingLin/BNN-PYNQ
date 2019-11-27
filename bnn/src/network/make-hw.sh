@@ -47,7 +47,7 @@ NETWORKS=$(ls -d *W*A*/ | cut -f1 -d'/' | tr "\n" " ")
 if [ "$#" -ne 3 ]; then
   echo "Usage: $0 <network> <platform> <mode>" >&2
   echo "where <network> = $NETWORKS" >&2
-  echo "<platform> = pynqZ1-Z2 ultra96" >&2
+  echo "<platform> = pynqZ1-Z2 ultra96 zcu104" >&2
   echo "<mode> = regenerate (h)ls only, (b)itstream only, (a)ll" >&2
   exit 1
 fi
@@ -60,6 +60,11 @@ PATH_TO_VIVADO_HLS=$(which vivado_hls)
 
 if [ -z "$XILINX_BNN_ROOT" ]; then
     export XILINX_BNN_ROOT="$( ( cd "$(dirname "$0")/.."; pwd) )"
+fi
+
+if [ -z "$XILINX_WORKSPACE_ROOT" ]; then
+    echo "Error: Please specify a workspace for FINN Libraries."
+    exit 1
 fi
 
 if [ -z "$PATH_TO_VIVADO" ]; then
@@ -80,14 +85,14 @@ fi
 
 
 OLD_DIR=$(pwd)
-cd $XILINX_BNN_ROOT
-if [ -d "${XILINX_BNN_ROOT}/xilinx-tiny-cnn/" ]; then
+cd $XILINX_WORKSPACE_ROOT
+if [ -d "${XILINX_WORKSPACE_ROOT}/xilinx-tiny-cnn/" ]; then
 	echo "xilinx-tiny-cnn already cloned"
 else
 	git clone https://github.com/Xilinx/xilinx-tiny-cnn.git
 fi
-cd library
-if [ -d "${XILINX_BNN_ROOT}/library/finn-hlslib" ]; then
+#cd library
+if [ -d "${XILINX_WORKSPACE_ROOT}/finn-hlslib" ]; then
 	echo "FINN hls library already cloned"
 else
 	git clone https://github.com/Xilinx/finn-hlslib.git
@@ -133,6 +138,9 @@ if [[ ("$MODE" == "h") || ("$MODE" == "a")  ]]; then
     TARGET_CLOCK=5
   elif [[ ("$PLATFORM" == "ultra96") ]]; then
     PLATFORM_PART="xczu3eg-sbva484-1-i"
+    TARGET_CLOCK=3
+  elif [[ ("$PLATFORM" == "zcu104") ]]; then
+    PLATFORM_PART="xczu7ev-ffvc1156-2-i"
     TARGET_CLOCK=3
   else
 	echo "Error: Platform not supported. Please choose between pynqZ1-Z2 and ultra96."

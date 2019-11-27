@@ -73,6 +73,7 @@ void FoldedMVDeinit() {
   bufOut = 0;
 }
 
+// targetMem: PE
 void FoldedMVMemSet(unsigned int targetLayer, unsigned int targetMem, unsigned int targetInd,unsigned int targetThresh, ExtMemWord val) {
   // call the accelerator in weight init mode
   BlackBoxJam((ap_uint<64> *)bufIn, (ap_uint<64> *)bufOut, true, targetLayer, targetMem, targetInd,targetThresh, val, 0);

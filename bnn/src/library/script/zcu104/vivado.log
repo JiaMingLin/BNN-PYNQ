@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Nov 27 22:06:21 2019
+# Process ID: 26287
+# Current directory: /home/jiaming/workplace/BNN-PYNQ/bnn/src/library/script/zcu104
+# Command line: vivado -mode batch -notrace -source make-vivado-proj.tcl
+# Log file: /home/jiaming/workplace/BNN-PYNQ/bnn/src/library/script/zcu104/vivado.log
+# Journal file: /home/jiaming/workplace/BNN-PYNQ/bnn/src/library/script/zcu104/vivado.jou
+#-----------------------------------------------------------
+source make-vivado-proj.tcl -notrace
+Expected: <jam repo> <proj name> <proj dir> <xdc_dir>
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 27 22:06:27 2019...

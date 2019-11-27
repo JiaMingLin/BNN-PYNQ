@@ -229,7 +229,7 @@ void testPrebuiltCIFAR10(std::vector<tiny_cnn::vec_t> & imgs, std::vector<tiny_c
   delete[] packedOut;
 }
 
-
+// inWidth = 8, outWidth = 16
 template<unsigned int inWidth, unsigned int outWidth, typename LowPrecType>
 std::vector<int>  testPrebuiltCIFAR10_from_image(std::vector<tiny_cnn::vec_t> & imgs, const unsigned int numCategories, float &usecPerImage) {
   const unsigned int count = 1;

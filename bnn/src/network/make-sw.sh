@@ -85,6 +85,9 @@ if [[ ("$BOARD" == "Pynq-Z1") || ("$BOARD" == "Pynq-Z2") ]]; then
 elif [[ ("$BOARD" == "Ultra96") ]]; then
   DEF_BOARD="ULTRA"
   PLATFORM="ultra96"
+elif [[ ("$BOARD" == "ZCU104") ]]; then
+  DEF_BOARD="ULTRA"
+  PLATFORM="zcu104"  
 else
   echo "Error: BOARD variable has to be Ultra96, Pynq-Z1 and Pynq-Z2 Board."
   exit 1
